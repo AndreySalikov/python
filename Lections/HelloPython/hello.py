@@ -42,27 +42,7 @@ print(f'{a} {b}')
 # c = a + b
 # print('{} + {} = {}'.format(a, b, c))
 
-# Арифметические операции
-# +, -, * , /, %, //,**
-# Приоритет операций
-# **, ⊕, ⊖, *, /, //, %, +, -
-# ( ) Скобки меняют приоритет
 
-# a = 8.123
-# b = 3 
-# c = round(a + b, 5)
-# print(c)
-# print(a ** b)
-# print(a % b)
-# print(round(a // b))
-# exp1 = 2**3 - 10 % 5 + 2*3
-# exp2 = 2**3 - 10 / 5 + 2*3
-# print(exp1) # 14.0 или 14
-# print(exp2) # 12.0 или 12
-# exp1 = 2**3 - 10 % 5 + 2*3
-# exp2 = (2**3) - (10 / 5) + (2*3)
-# print(exp1) # 14.0 или 14
-# print(exp2) # 12.0 или 12
 
 # Сокращённые операции и операции присваивания
 # iter = 2
@@ -114,92 +94,11 @@ print(f'{a} {b}')
 # is_odd = not f[0] % 2
 # print(is_odd)
 
-# Управляющие конструкции:
-# if, if-else
 
-# if condition:
-#  # operator 1
-#  # operator 2
-#  # ...
-#  # operator n
-# else:
-#  # operator n + 1
-#  # operator n + 2
-#  # ...
-#  # operator n + m
 
-# username = input('Введите имя: ')
-# if(username == 'Маша'):
-#   print('Ура, это же МАША!');
-# else:
-#   print('Привет, ', username);
 
-# if condition1:
-#  # operator
-# elif condition2:
-#  # operator
-# elif condition3:
-#  # operator
-# else:
-#  # operator
 
-# username = input('Введите имя: ')
-# if username == 'Маша':
-#     print('Ура, это же МАША!')
-# elif username == 'Марина':
-#     print('Я так ждала Вас, Марина!')
-# elif username == 'Ильнар':
-#     print('Ильнар - топ)')
-# else:
-#     print('Привет, ', username)
 
-# a = int(input('Enter a: '))
-# b = int(input('Enter b: '))
-# if a > b:
-#     print(a)
-# else:
-#     print(b)
-
-# Управляющие конструкции:
-# while
-
-# while condition:
-#  # operator 1
-#  # operator 2
-#  # . . .
-#  # operator n
-
-# original = 23
-# inverted = 0
-# while original != 0:
-#  inverted = inverted * 10 + (original % 10)
-#  original //= 10
-# print(inverted)
-
-# Управляющие конструкции: while-else
-# while condition:
-#  # operator 1
-#  # operator 2
-#  # . . .
-#  # operator n
-# else:
-#  # operator n + 1
-#  # operator n + 2
-#  # . . .
-#  # operator n + m
-
-# original = 23
-# inverted = 0
-# while original != 0:
-#     inverted = inverted * 10 + (original % 10)
-#     original //= 10
-# else:
-#     print('Пожалуй')
-#     print('хватит )')
-# print(inverted)
-# # Пожалуй
-# # хватит )
-# # 32
 
 # Управляющая конструкция 
 # for
@@ -299,31 +198,3 @@ colors.append('gray') # добавить в конец
 print(colors == ['red', 'green', 'blue', 'gray']) # True
 colors.remove('red') #del colors[0] # удалить элемент
 
-# Функции
-
-# def function_name(x):
-# # body line 1
-# # . . .
-# # body line n
-#  # optional return
-
-def f(x):
-    return x**2
-
-print(f(2))
-
-
-def f(x):
-    if x == 1:
-        return 'Целое'
-    elif x == 2.3:
-        return 23
-    else:
-        return
-
-print(f(1)) # Целое
-print(f(2.3)) # 23
-print(f(28)) # None
-print(type(f(1))) # str
-print(type(f(2.3))) # int
-print(type(f(28))) # NoneType
