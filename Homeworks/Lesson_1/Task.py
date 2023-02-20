@@ -15,6 +15,7 @@
 
 # print("The sum of the digits is:", int(sum))
 
+<<<<<<< HEAD
 # решение 2 
 
 # n = input("Введите трехзначное число: ")
@@ -38,6 +39,8 @@ a = str (input('Enter number: '))
 summa = int(a[0]) + int(a[1]) + int(a[2])
 print(summa)
 
+=======
+>>>>>>> 469fba336352ed5f633da7427fdf0ec3e89afa21
 # Задача 4: Петя, Катя и Сережа делают из бумаги журавликов. 
 # Вместе они сделали S журавликов. Сколько журавликов сделал каждый ребенок, если известно, 
 # что Петя и Сережа сделали одинаковое количество журавликов, 
@@ -89,6 +92,7 @@ print(summa)
 
 # Пример кода:
 
+<<<<<<< HEAD
 # n = int(input("Enter length of the chocolate bar: "))
 # m = int(input("Enter width of the chocolate bar: "))
 # k = int(input("Enter the number of pieces you want to get: "))
@@ -98,3 +102,13 @@ print(summa)
 # else:
 #     print("No, it is not possible to get", k, "pieces")
 
+=======
+n = int(input("Enter length of the chocolate bar: "))
+m = int(input("Enter width of the chocolate bar: "))
+k = int(input("Enter the number of pieces you want to get: "))
+
+if ((n * m) % k != 0):
+    print("Yes, it is possible to get", k, "pieces")
+else:
+    print("No, it is not possible to get", k, "pieces")
+>>>>>>> 469fba336352ed5f633da7427fdf0ec3e89afa21
