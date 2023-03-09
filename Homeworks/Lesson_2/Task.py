@@ -7,7 +7,6 @@
 # 2
 
 
-
 # coins = [1, 0, 1, 1, 0]
 
 # count = 0
@@ -18,6 +17,19 @@
 
 # print(count)
 
+n = int(input())
+count_zero = 0
+count_one = 0
+for i in range(n):
+    x = int(input())
+    if x == 0:
+        count_zero += 1
+    else:
+        count_one += 1
+if count_one > count_zero:
+    print(count_zero)
+else:
+    print(count_one)
 
 
 # Петя и Катя – брат и сестра. Петя – студент, а Катя –
@@ -27,6 +39,13 @@
 # произведение P. Помогите Кате отгадать задуманные Петей числа.
 # 4 4 -> 2 2
 # 5 6 -> 2 3
+
+x = int(input())
+y = int(input())
+for i in range(x):
+    for j in range(y):
+        if x == i + j and y == i * j:
+            print(i, j)
 
 # s = int(input('Введите сумму: '))
 # p = int(input('Введите произведение: '))
@@ -53,6 +72,11 @@
 # вида 2k), не превосходящие числа N.
 # 10 -> 1 2 4 8
 
+n = int(input())
+i = 0
+while 2 ** i <= n:
+    print(2 ** i)
+    i += 1
 
 # # Задаем значение N
 # N = 10
