@@ -7,31 +7,7 @@
 # записи(Например имя или фамилию человека)
 # 4. Использование функций. Ваша программа не должна быть линейной
 
-def work_with_phonebook():
-    choice = show_menu()
-    phone_book = read_csv('d:\YandexDisk\education\Программирование на Python\Seminars\Seminar_8\phonebook.csv')
-    while (choice != 6):
-        if choice == 1:
-            print_result(phone_book)
-        elif choice == 2:
-            name = get_search_name()
-            print(find_by_name(phone_book, name))
-        elif choice == 3:
-            number = get_search_number()
-            print(find_by_number(phone_book, number))
-        elif choice == 4:
-            user_data = get_new_user()
-            add_user(phone_book, user_data)
-            write_csv('d:\YandexDisk\education\Программирование на Python\Seminars\Seminar_8\phonebook.csv', phone_book)
-        elif choice == 5:
-            file_name = get_file_name()
-            write_txt(file_name, phone_book)
-            choice = show_menu()
-
-
 def read_csv(filename: str) -> list:
-
-
     data = []
     fields = ["Фамилия", "Имя", "Телефон", "Описание"]
     with open(filename, 'r', encoding='utf-8') as fin:
@@ -40,70 +16,109 @@ def read_csv(filename: str) -> list:
             data.append(record)
     return data
 
-read_csv('d:\YandexDisk\education\Программирование на Python\Seminars\Seminar_8\phonebook.csv')
+def show_menu() -> list:
+    print("\nМеню:\n"
+          "1. Отобразить весь справочник\n"
+          "2. Найти обонента по фамилии\n"
+          "3. Найти абонента по номеру телефона\n"
+          "4. Добавить абонента в справочник\n"
+          "5. Удалить абонента из справочника\n"
+          "6. Сохранить справочник в текстовом формате\n"
+          "7. Закончить работу\n")
+    choice = int(input('Введите номер пункта меню: '))
+    return choice
 
-# def import_data(txt_file): # функция импорта данных из текстового файла
-#     file = open(txt_file, 'r') # открываем файл
-#     # читаем файл построчно
-#     lines = file.readlines()
-#     data = []
-#     # парсим файл
-#     for line in lines:
-#         line_data = line.split(',')
-#         data.append(line_data)
-#     # закрываем файл
-#     file.close()
-#     # возвращаем результат
-#     return data
+def print_result(data) -> list:
+    print(*data, sep='\n')
 
-# def export_data(txt_file, data): # функция для экспорта данных в .txt файл
-#     file = open(txt_file, 'w') # открываем файл для записи
-#     for row in data:
-#         # пишем данные в файл через запятую
-#         line = ','.join(row)
-#         file.write(line)
-#     file.close() # закрываем файл
+def write_csv(filename: str, data) -> str:
+    file = open(filename, 'w', encoding='utf-8')
+    for lines in data:
+        s = ', '.join(f'{v}' for k, v in lines.items())
+        file.write(s + '\n')
 
-# def create_directory(data): # функция для создания телефонного справочника
-#   directory = {}
-#   # наполняем справочник
-#   for row in data:
-#     name = row[0].strip()
-#     number = row[1].strip()
-#     directory[name] = number
-#   # возвращаем результат
-#   return directory
+def write_txt(filename: str, data) -> str:
+    file = open(filename + ".txt", 'w', encoding='utf-8')
+    for lines in data:
+        s = ', '.join(f'{v}' for k, v in lines.items())
+        file.write(s + '\n')
 
-# def search_directory(directory, query): # функция для поиска в справочнике
-#     result = {}
-#     for name, number in directory.items():
-#         # проверяем содержимое строки поиска в справочнике
-#         if query.lower() in name.lower():
-#             # добавляем найденные значения в результат
-#             result[name] = number
-#     return result
+def get_file_name() -> str:
+    name_of_the_file = input(
+        'Ввведите название файла который вы хотите сохранить: ')
+    return name_of_the_file
 
-# def print_directory(directory, title): # функция для печати справочника
-#     # выводим заголовок
-#     print(title)
-#     # выводим содержимое справочника
-#     for name, number in directory.items():
-#      print(f'{name:>30}:{number}')
+def get_search_name() -> str:
+    name = input('Ввведите фамилию абонента: ')
+    return name
 
-# # главная функция
-# def main():
-#     # имя текстового файла
-#     txt_file = 'data.txt'
-#     # импорт данных из файла
-#     data = import_data(txt_file)
-#     # создание телефонного справочника
-#     directory = create_directory(data)
-#     # поиск данных по запросу
-#     result = search_directory(directory, 'Ivan')
-#     # печать результатов
-#     print_directory(result, 'Search results:')
-#     # экспорт данных в файл
-#     export_data(txt_file, data)
-# # запуск программы
-# if __name__ == "__main__":
-#     main()
+def find_by_name(data, surname) -> str:
+    for key in data:
+        if key['Фамилия'].upper() == surname.upper():
+            return key.values()
+    return ('Такого абонента нет')
+
+def get_search_number():
+    number = input('Ввведите номер абонента: ')
+    return number
+
+def find_by_number(data, number):
+    for key in data:
+        if key['Телефон'] == number:
+            return key.values()
+    return ('Такого абонента нет')
+
+def get_new_user():
+    surname = input('Введите фамилию абонента: ')
+    name = input('Введите имя абонента: ')
+    number = input('Введите номер абонента: ')
+    description = input('Введите описание: ')
+    return dict(zip(['Фамилия', 'Имя', 'Телефон', 'Описание'],
+        [surname, name, number, description]))
+
+def add_user(data, user):
+    data.append(dict(zip(['Фамилия', 'Имя', 'Телефон', 'Описание'],
+        [user['Фамилия'], user['Имя'], user['Телефон'], user['Описание']])))
+    
+def get_delete_user():
+    surname = input('Введите фамилию абонента: ')
+    return surname
+
+def delete_user(data: list, last_name: str) -> str:
+    for i in range(len(data)):
+        if data[i].get("Фамилия") == last_name:
+            del data[i]
+            return f"Абонент {last_name} успешно удален"
+    return "Такой абонент отсутствует в списке"
+
+def work_with_phonebook():
+    choice = show_menu()
+    phone_book = read_csv('Seminars\Seminar_8\phonebook.csv')
+    while (choice != 7):
+        if choice == 1:
+            print_result(phone_book)
+            break
+        elif choice == 2:
+            name = get_search_name()
+            print(*find_by_name(phone_book, name), end='')
+            break
+        elif choice == 3:
+            number = get_search_number()
+            print(*find_by_number(phone_book, number), end='')
+            break
+        elif choice == 4:
+            user_data = get_new_user()
+            add_user(phone_book, user_data)
+            write_csv('Seminars\Seminar_8\phonebook.csv', phone_book)
+            break
+        elif choice == 5:
+            user_data = input('Введите фамилию: ')
+            delete_user(phone_book, user_data)
+            write_csv('Seminars\Seminar_8\phonebook.csv', phone_book)
+            break        
+        elif choice == 6:
+            file_name = get_file_name()
+            write_txt(file_name, phone_book)
+            choice = show_menu()
+
+work_with_phonebook()
